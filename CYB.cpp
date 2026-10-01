@@ -67,3 +67,82 @@
 //     printf("max = %d\n", a > b ? a : b);
 //     return 0;
 // }//注意：字符之间有无空格的失误也会导致答案错误
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a;
+//     scanf("%d", &a);
+//     int arr[7] = {1, 2, 3, 4, 5, 6, 7};
+//     int b = a + 2;
+//     if(b >= 1 && b <= 7)
+//     printf("%d", arr[b - 1]);
+//     else if(b > 7)
+//     printf("%d", arr[b - 8]);
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int N;
+//     scanf("%d", &N);
+//     if(N % 5 == 4 || N % 5 == 0)//%运算之后的结果有0，1，2，3，4五种情况，没有5；
+//     {
+//         printf("Drying in day %d", N);
+//     }
+//     else 
+//     {
+//         printf("Fishing in day %d", N);
+//     }
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a;
+//     scanf("%d", &a);
+//     if(a >= 90)
+//     {
+//         printf("score=%d,grade:A", a);
+//     }
+//     else if(a >= 80)
+//     {
+//         printf("score=%d,grade:B", a);
+//     }
+//     else if(a >= 70)
+//     {
+//         printf("score=%d,grade:C", a);
+//     }
+//     else if(a >= 60)
+//     {
+//         printf("score=%d,grade:D", a);
+//     }
+//     else
+//     {
+//         printf("score=%d,grade:E", a);
+//     }
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int grade;
+//     scanf("%d", &grade);
+//     if(grade > 85)//85以上，即是>85
+//     {
+//         printf("very good");
+//     }
+//     else if(grade >= 60 && grade <= 85)
+//     {
+//         printf("good");
+//     }
+//     else if(grade < 60)
+//     {
+//         printf("no good");
+//     }
+//     return 0;
+// }
+
