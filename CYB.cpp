@@ -146,3 +146,205 @@
 //     return 0;
 // }
 
+//*
+// #include<stdio.h>
+// int main()
+// {
+//     int a,b,c,t;
+//     scanf("%d %d %d", &a, &b, &c);
+//     if(a > b)
+//     {
+//         t = a;
+//         a = b;
+//         b = t;
+//     }
+//     if(a > c)
+//     {
+//         t = a;
+//         a = c;
+//         c = t;
+//     }
+//     if(b > c)
+//     {
+//         t = b;
+//         b = c;
+//         c = t;
+//     }
+//     printf("a=%d,b=%d,c=%d", a, b, c);
+//     return 0;
+// } //注意：考虑清楚怎么把答题要求转换为编程语言
+
+// #include<stdio.h>
+// #include<stdbool.h>
+// bool is_leap_year()
+// {
+//     int year;
+//     scanf("%d", &year);
+//     if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+//         return true;
+//     else
+//         return false;
+// }
+// int main()
+// {
+//     int month;
+//     scanf("%d", &month);
+//     switch(month)
+//     {
+//         case 1:
+//             printf("January,31");
+//             break;
+//         case 2:
+//             if(is_leap_year() )
+//                 printf("February,29");
+//             else
+//             printf("February,28");
+//             break;
+//         case 3:
+//             printf("March,31");
+//             break;
+//         case 4:
+//             printf("April,30");
+//             break;
+//         case 5:
+//             printf("May,31");
+//             break;
+//         case 6:
+//             printf("June,30");
+//             break;
+//         case 7:
+//             printf("July,31");
+//             break;
+//         case 8:
+//             printf("August,31");
+//             break;
+//         case 9:
+//             printf("September,30");
+//             break;
+//         case 10:
+//             printf("October,31");
+//             break;
+//         case 11:
+//             printf("November,30");
+//             break;
+//         case 12:
+//             printf("December,31");
+//             break;
+//     }
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a,b,c,t;
+//     scanf("%d %d %d", &a, &b, &c);
+//     if(a > b)
+//     {
+//         t = a;
+//         a = b;
+//         b = t;
+//     }
+//     if(a > c)
+//     {
+//         t = a;
+//         a = c;
+//         c = t;
+//     }
+//     if(b > c)
+//     {
+//         t = b;
+//         b = c;
+//         c = t;
+//     }
+//     if(a + b > c)//三角形的三边关系 && c - a < b或者a + b > c成立一个就能确定可以形成三角形（a<b<c）
+//     {
+//         printf("Yes");
+//     }
+//     else
+//     {
+//         printf("No");
+//     }
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a,b,c;
+//     scanf("%d %d %d", &a, &b, &c);
+//     if((a <= b && a >= c) || (a >= b && a <= c))
+       //考虑问题要全面，仅仅考虑a <= b && a >= c不够完整
+//     {
+//         printf("%d", a);
+//     }
+//     else if((b <= a && b >= c) || (b >= a && b <= c))
+//     {
+//         printf("%d", b);
+//     }
+//     else if((c <= a && c >= b) || (c >= a && c <= b))
+//     {
+//         printf("%d", c);
+//     }
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a,b,c;
+//     scanf("%d %d %d", &a, &b, &c);
+//     if(a >= 12)
+//     {
+//         a = a - 12;
+//         printf("%d %d %d PM", a, b, c);
+//     }
+//     else
+//     {
+//         printf("%d %d %d AM", a, b, c);
+//     }
+//     return 0;
+// }
+
+// #include<stdio.h>
+// #include<math.h>
+// int main()
+// {
+//     double x,y,z;
+//     scanf("%lf", &x);
+//     if(x <= 2.5)
+//         y = pow(x,2) + 1;
+//     else if(x > 2.5)
+//         y = pow(x,2) - 1;
+//     if(x >= 1 && x < 2)
+//        z = 3 * x + 5;
+//     else if(x >= 2 && x < 3)
+//        z = 2 * sin(x) - 1;    
+//     else if(x >= 3 && x < 5)
+//        z = sqrt(1 + pow(x,2));
+//     else if(x >= 5 && x < 8)
+//        z = pow(x,2) - 2 * x + 5;
+//     printf("%lf\n%lf", y, z);
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     double x,y;
+//     scanf("%lf", &x);
+//     if(x <= 100000)
+//         y = x * 0.1;
+//     else if(x > 100000 && x <= 200000)
+//         y = 10000 + (x - 100000) * 0.075;
+//     else if(x > 200000 && x <= 400000)
+//         y = 17500 + (x - 200000) * 0.05;
+//     else if(x > 400000 && x <= 600000)
+//         y = 27500 + (x - 400000) * 0.03;
+//     else if(x > 600000 && x <= 1000000)
+//         y = 33500 + (x - 600000) * 0.015;
+//     else if(x > 1000000)
+//         y = 39500 + (x - 1000000) * 0.01;
+//     printf("%.2lf", y);
+//     return 0;
+// }
