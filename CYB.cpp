@@ -349,9 +349,9 @@
 //     return 0;
 // }
 
+//*******
 // #include <stdio.h>
 // #include <string.h>
-
 // // 枚举五行
 // enum Wuxing{
 //     mu,
@@ -360,7 +360,6 @@
 //     jin,
 //     shui
 // };
-
 // // 函数：输入拼音字符串，返回对应的枚举数字
 // int getCode(char s[])//
 // {
@@ -458,8 +457,8 @@
 //     scanf("%lf %lf", &a, &b);
 //     int k = floor(a / b);//a = k * b + r实际意思就是a /  b = k ,余数是r
 //     double r = a - k * b;
-//     printf("%g", r);
-//     return 0;
+//     printf("%g", r);//%g 用于 printf：自动在三种格式中选最短的那个输出，并去掉尾随的 0
+//     return 0;       //%.3g 相当于 取3位有效数字
 // }
 //floor:向下取整，是的小数数字变小
 //int:向0截断，使得正数小数变小，负数小数变大
@@ -474,5 +473,115 @@
 //     int bai = n / 100 % 10;
 //     int qian = n / 1000;//四位数最高位是第四位，不用再进行取模运算
 //     printf("%d=%d+%d*10+%d*100+%d*1000",n,ge,shi,bai,qian);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// int main()
+// {
+//     int n;
+//     scanf("%d",&n);
+//     int ge = n % 10;
+//     int shi = n / 10 % 10;
+//     int bai = n / 100;
+//     printf("%d%d%d",ge,shi,bai);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include<math.h>
+// int main()
+// {
+//     int n;
+//     scanf("%d",&n);
+//     int ge = n % 10;
+//     int shi = n / 10 % 10;
+//     int bai = n / 100;
+//     if(pow(ge,3) + pow(shi,3) + pow(bai,3) == n)
+//     printf("YES");
+//     else
+//     printf("NO");
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include<math.h>
+// int main()
+// {
+//     int n,i,j;
+//     scanf("%d",&n);   
+//     double s = 0;
+//     for(i = 1; i <= n; i++)
+//     {
+//        for(j = 2; j <= n + 1; j++)
+//        {
+//            s +=  pow(i * j, -1);
+// //数值上会出现重复的项：不同的 (i,j) 只要乘积相同，加的就是同一个值。例如 n≥5 时：
+// // 1/(1*6)、1/(2*3)、1/(3*2) 都等于 1/6，被加了 3 次
+// // 同理 1/8 来自 (1,8)、(2,4)、(4,2)，加 2 次
+// // 所以这是「因式分解不同导致的重复值」，属于这个求和式本身的性质，不是循环 bug。
+//        }
+//     }
+//     printf("%.5lf",s);
+//     return 0;
+// }
+// 正确解法
+// #include <stdio.h>
+// #include<math.h>
+// int main()
+// {
+//     int n,i,j;
+//     scanf("%d",&n);   
+//     double s = 0;
+       //这里也可以先化简计算式，再按照化简后的式子来简化代码流程
+//     for(i = 1; i <= n; i++)
+//     {
+//            s +=  pow(i * (i + 1), -1.0);  
+//     }
+//     printf("%.5lf",s);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// int main()
+// {
+//     int n,a,b,c;
+//     scanf("%d",&n);
+//     n = n - 2;
+//     a = 1;
+//     b = 1;
+//     printf("%10d%10d",a,b);
+//     while(n--)//n-- 这个判断条件下n非0时就会进入下方循环
+//     {
+//         c = a + b;
+//         printf("%10d",c);
+//         a = c;     //a=b;b=c; 直接将第n项的前两项表示出来
+//         b = c - b;
+//     }//未考虑输出五个数字后需要换行的要求
+//     return 0;
+// }
+// #include <stdio.h>
+// int main()
+// {
+//     int n;
+//     scanf("%d", &n);
+//     int a = 1, b = 1;
+//     for(int i = 1; i <= n; i++)
+//     {
+//         if(i == 1)
+//             printf("%10d", a);
+//         else if(i == 2)
+//             printf("%10d", b);
+//         else
+//         {
+//             int c = a + b;
+//             printf("%10d", c);
+//             a = b;
+//             b = c;
+//         }
+//         // 每5个输出完，换行
+//         if(i % 5 == 0)
+//             printf("\n");
+//     }
 //     return 0;
 // }
