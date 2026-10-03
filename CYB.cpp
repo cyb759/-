@@ -348,3 +348,131 @@
 //     printf("%.2lf", y);
 //     return 0;
 // }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// // 枚举五行
+// enum Wuxing{
+//     mu,
+//     huo,
+//     tu,
+//     jin,
+//     shui
+// };
+
+// // 函数：输入拼音字符串，返回对应的枚举数字
+// int getCode(char s[])//
+// {
+//     if(strcmp(s,"mu")==0) return mu;
+//     if(strcmp(s,"huo")==0) return huo;
+//     if(strcmp(s,"tu")==0) return tu;
+//     if(strcmp(s,"jin")==0) return jin;
+//     if(strcmp(s,"shui")==0) return shui;
+//     return -1;
+// }
+
+// int main()
+// {
+//     int N;
+//     scanf("%d",&N);
+//     char A[20], B[20];
+//     while(N--)
+//     {
+//         scanf("%s %s",A,B);
+//         int a = getCode(A);
+//         int b = getCode(B);
+
+//         if( (a+1)%5 == b )
+//         {
+//             // A生B
+//             printf("%s sheng %s\n",A,B);
+//         }
+//         else if( (a+2)%5 == b )
+//         {
+//             // A克B
+//             printf("%s ke %s\n",A,B);
+//         }
+//         else if( (b+1)%5 == a )
+//         {
+//             // B生A
+//             printf("%s sheng %s\n",B,A);
+//         }
+//         else
+//         {
+//             // B克A
+//             printf("%s ke %s\n",B,A);
+//         }
+//     }
+//     return 0;
+// }
+//第二种不用指针的写法
+// #include<stdio.h>
+// #include<string.h>
+// enum Wuxing{
+//     mu,
+//     huo,
+//     tu,
+//     jin,
+//     shui
+// };
+// int main()
+// {
+//     int N;
+//     scanf("%d", &N);
+//     char A[10], B[10];
+//     while(N--)
+//     {
+//         scanf("%s %s", A, B);
+//         int a, b;
+//         if(strcmp(A, "mu") == 0) a = mu;
+//         else if(strcmp(A, "huo") == 0) a = huo;
+//         else if(strcmp(A, "tu") == 0) a = tu;
+//         else if(strcmp(A, "jin") == 0) a = jin;
+//         else if(strcmp(A, "shui") == 0) a = shui;
+
+//         if(strcmp(B, "mu") == 0) b = mu;
+//         else if(strcmp(B, "huo") == 0) b = huo;
+//         else if(strcmp(B, "tu") == 0) b = tu;
+//         else if(strcmp(B, "jin") == 0) b = jin;
+//         else if(strcmp(B, "shui") == 0) b = shui;
+
+//         if((a + 1) % 5 == b)
+//             printf("%s sheng %s\n", A, B);
+//         else if((a + 2) % 5 == b)
+//             printf("%s ke %s\n", A, B);
+//         else if((b + 1) % 5 == a)
+//             printf("%s sheng %s\n", B, A);
+//         else
+//             printf("%s ke %s\n", B, A);
+//     }
+//     return 0;
+// }
+
+
+// #include <stdio.h>
+// #include<math.h>
+// int main()
+// {
+//     double a, b;
+//     scanf("%lf %lf", &a, &b);
+//     int k = floor(a / b);//a = k * b + r实际意思就是a /  b = k ,余数是r
+//     double r = a - k * b;
+//     printf("%g", r);
+//     return 0;
+// }
+//floor:向下取整，是的小数数字变小
+//int:向0截断，使得正数小数变小，负数小数变大
+
+// #include <stdio.h>
+// int main()
+// {
+//     int n;
+//     scanf("%d",&n);
+//     int ge = n % 10;
+//     int shi = n / 10 % 10;
+//     int bai = n / 100 % 10;
+//     int qian = n / 1000;//四位数最高位是第四位，不用再进行取模运算
+//     printf("%d=%d+%d*10+%d*100+%d*1000",n,ge,shi,bai,qian);
+//     return 0;
+// }
