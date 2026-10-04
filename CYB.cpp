@@ -585,3 +585,97 @@
 //     }
 //     return 0;
 // }
+
+
+//***********
+//a | b 表示 a 整除 b（b是被除数）
+// #include <stdio.h>
+// int main()
+// {
+//     long long N;
+//     scanf("%lld", &N);
+//     int maxlen = 0;
+//     int start = 0;
+
+//     //枚举连续序列起点i
+//     for(int i = 2; (long long)i*i <= N; i++)
+//     {
+//         long long mul = 1;
+//         int j;
+//         for(j = i; ; j++)//注意：如果把j = 1; 改成int j = 1;就会使得j的生命周期只是在for语句内部，出语句立马被销毁
+//         {
+//             mul *= j;
+//             if(N % mul != 0)
+//                 break;
+//         }
+//         int len = j - i;//内层循环里只修改 j，完全没有碰 i。所以当内层 break 出来时，i 当然还是 2
+               //先 mul *= j 再判断。所以 break 触发的那一刻，j 这个数已经算进乘积里并且失败了，它不属于合法序列。
+              //合法序列是：i, i+1, i+2, ..., j-1       i 到 j-1 这一段共有几个数？用"末尾 - 开头 + 1"
+
+//         if(len > maxlen)
+//         {
+//             maxlen = len;
+//             start = i;
+//         }
+//     }
+
+//     //质数的情况：没有>=2的连续因子，序列就是自己
+//     if(maxlen == 0)
+//     {
+//         maxlen = 1;
+//         start = N;
+//     }
+
+//     printf("%d\n", maxlen);
+//     for(int k = 0; k < maxlen; k++)
+//     {
+//         if(k > 0)
+//             printf("*");
+//         printf("%d", start + k);
+//     }
+//     printf("\n");
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//   int n,mu1;
+//   scanf("%d",&n);
+//   int start = n * (2 * n + 1);
+//   for(int i = start; i <= n + start; i++)
+//   {
+//        if(i > start)
+//        printf(" + ");
+//        printf("%d^2",i);
+//   }
+//   printf(" = ");
+//   for(int j = n + 1 start; j <= 2 * n + start; j++)
+//   {
+//        if(j > n + start + 1)
+//        printf(" + ");
+//        printf("%d^2",j);
+//   }
+// }
+// #include<stdio.h>
+// int main()
+// {
+//     int n;
+//     scanf("%d",&n);
+//     int start = n*(2*n+1); // 算出数列第一个数
+//     int i;
+//     // 输出前 n+1 项：start ~ start+n
+//     for(i=0; i<=n; i++)
+//     {
+//         if(i>0) printf(" + ");
+//         printf("%d^2", start+i);//只在打印时用到start，比上面代码更加简单
+//     }
+//     printf(" = ");
+//     // 输出后 n 项：start+n+1 ~ start+2n
+//     for(i=n+1; i<=2*n; i++)
+//     {
+//         if(i>n+1) printf(" + ");
+//         printf("%d^2", start+i);
+//     }
+//     return 0;
+// }
