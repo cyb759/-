@@ -144,6 +144,43 @@
 //     return 0;
 // }
 
+// #include<stdio.h>
+// int main()
+// {
+//     int N;
+//     scanf("%d",&N);
+//     double arr[1000];
+//     int x; 
+//     double sum = 0.0;
+//     for(x = 0; x < N; x++)
+//     {
+//         scanf("%lf",&arr[x]);
+//         sum += 1.0 / arr[x];//不能用N--，会使得N的值变小，导致下面代码运算全错
+//     } 
+//     sum = sum / N;
+//     sum = 1.0 / sum;//这两行可以改为sum = N / sum;
+//     printf("%.2lf",sum);
+//     return 0;
+// }
+//下面代码，不用数组，更加简便
+// #include<stdio.h>
+// int main()
+// {
+//     int N;
+//     scanf("%d",&N);
+//     double num, sum = 0;
+//     for(int i=0; i<N; i++)
+//     {
+//         scanf("%lf", &num);
+//         sum += 1.0 / num;
+//     }
+//     double h = N / sum;
+//     printf("%.2lf", h);
+//     return 0;
+// }
+
+
+
 
 
 
