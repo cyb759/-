@@ -604,7 +604,7 @@
 //         int j;
 //         for(j = i; ; j++)//注意：如果把j = 1; 改成int j = 1;就会使得j的生命周期只是在for语句内部，出语句立马被销毁
 //         {
-//             if(mul > N / j) break; // 预判：mul*j会超过N，不能乘
+//             if(mul > N / j) break; // 当mul*j>N时直接写 `if(mul * j > N)` 依然会溢出！所以利用数学变形，**除法代替乘法预判**
 //             mul *= j;
 //             if(N % mul != 0)
 //                 break;
