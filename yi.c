@@ -148,47 +148,82 @@
 //     return 0;
 // }
 
-#include<stdio.h>
+// #include<stdio.h>
 
-// 计算 x的y次方
-long long power(int x, int y)
-{
-    long long ans = 1;
-    for(int i = 0; i < y; i++)
-    {
-        ans *= x;
-    }
-    return ans;
-}
+// // 计算 x的y次方
+// long long power(int x, int y)
+// {
+//     long long ans = 1;
+//     for(int i = 0; i < y; i++)
+//     {
+//         ans *= x;
+//     }
+//     return ans;
+// }
 
-int main()
-{
-    int N;
-    scanf("%d", &N);
+// int main()
+// {
+//     int N;
+//     scanf("%d", &N);
 
-    // 求起始：10^(N-1)  例如N=3，start=100
-    long long start = 1;
-    for(int i = 0; i < N-1; i++)
-        start *= 10;
-    long long end = start * 10;
+//     // 求起始：10^(N-1)  例如N=3，start=100
+//     long long start = 1;
+//     for(int i = 0; i < N-1; i++)
+//         start *= 10;
+//     long long end = start * 10;
 
-    // 遍历全部N位数
-    for(long long num = start; num < end; num++)
-    {
-        long long temp = num;
-        long long sum = 0;
-        // 拆每一位
-        while(temp > 0)
-        {
-            int digit = temp % 10;
-            sum += power(digit, N);
-            temp /= 10;
-        }
-        if(sum == num)
-        {
-            printf("%lld\n", num);
-        }
-    }
-    return 0;
-}
+//     // 遍历全部N位数
+//     for(long long num = start; num < end; num++)
+//     {
+//         long long temp = num;
+//         long long sum = 0;
+//         // 拆每一位
+//         while(temp > 0)
+//         {
+//             int digit = temp % 10;
+//             sum += power(digit, N);
+//             temp /= 10;
+//         }
+//         if(sum == num)
+//         {
+//             printf("%lld\n", num);
+//         }
+//     }
+//     return 0;
+// }
+//以下代码N超过8会导致溢出
+//#include<iostream>
+// using namespace std;
+// int power(int x, int y)
+// {
+//     int sum = 1;
+//     for(int i = 0; i < y ; i++)
+//     {
+//         sum *= x;
+//     }
+//     return sum;
+// }
+// int main(){
+//     int N;
+//     scanf("%d",&N);
+//     int start = 1;
+//     for(int i = 0; i < N - 1; i++)
+//     start *= 10;
+//     int end = start * 10;
+//     for(int j = start; j < end; j++)
+//     {
+//         int m = j;
+//         int n = 0;
+//         while(m > 0)
+//         {
+//             int num = m % 10;//第一次进入循环个位数子
+//             n += power(num,N);
+//             m /= 10;
+//         }
+//         if(n == j)
+//         cout << j  << endl;
+//     }
+//     return 0;       
+// }
+
 
