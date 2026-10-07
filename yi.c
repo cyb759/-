@@ -147,3 +147,48 @@
 //     }
 //     return 0;
 // }
+
+#include<stdio.h>
+
+// 计算 x的y次方
+long long power(int x, int y)
+{
+    long long ans = 1;
+    for(int i = 0; i < y; i++)
+    {
+        ans *= x;
+    }
+    return ans;
+}
+
+int main()
+{
+    int N;
+    scanf("%d", &N);
+
+    // 求起始：10^(N-1)  例如N=3，start=100
+    long long start = 1;
+    for(int i = 0; i < N-1; i++)
+        start *= 10;
+    long long end = start * 10;
+
+    // 遍历全部N位数
+    for(long long num = start; num < end; num++)
+    {
+        long long temp = num;
+        long long sum = 0;
+        // 拆每一位
+        while(temp > 0)
+        {
+            int digit = temp % 10;
+            sum += power(digit, N);
+            temp /= 10;
+        }
+        if(sum == num)
+        {
+            printf("%lld\n", num);
+        }
+    }
+    return 0;
+}
+
