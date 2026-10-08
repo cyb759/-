@@ -314,3 +314,51 @@
 //     cout << "total=" << total << endl;
 //     return 0;
 // }
+
+// 错误示例
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int n;
+//     cin >> n;
+//     double sum = 100.0;
+//     double s = 100.0;
+//     double h = 0.0;
+//     for(int i = 2; i <= n; i++)
+//     {       
+//         if(n == 1)
+//         {
+//             h = 50.0;
+//             cout << s << " " << h ;
+//             break;
+//         }
+//         s += sum;
+//         h = sum / 2.0;
+//         sum = h;
+//     }
+//     cout << s << " " << h ;//cout无法满足输出足够的0（%lf）
+//     return 0;
+// }
+// 正确示例
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int n;
+//     cin >> n;
+//     double sum = 100.0;
+//     double s = 100.0;
+//     double h = 50.0;
+//     if(n == 1)
+//     {
+//         printf("%lf %lf", s, h);
+//         return  0;
+//     }
+//     for(int i = 2; i <= n; i++)//这里的sum也可以用h来代替s += 2.0 * h;   h /= 2.0; 并且去掉对sum的无用定义
+//     {       
+//         s += sum;
+//         h /= 2.0;
+//         sum = 2.0 * h;
+//     }
+//     printf("%lf %lf", s, h);
+//     return 0;
+// }
