@@ -362,3 +362,119 @@
 //     printf("%lf %lf", s, h);
 //     return 0;
 // }
+
+
+//错误示例
+// #include<iostream>
+// using namespace std;
+// int power(int x, int y)//没有判断负数
+// {
+//     double num;
+//     num = (y - 2 * x) / 2.0;
+//     double a = num;
+//     if(num / 1 == a)
+//     return num;
+//     return 0;
+// }
+// int main(){
+//     int m, n;
+//     cin >> m >> n ;    
+//     if(power(m,n) != 0)
+//     {
+//         int num = m - power(m,n);
+//         cout << power(m,n) << " " << num ;
+//     }
+//     else 
+//         cout << "Error" ;
+//     return 0;
+// }
+//正确示例
+// #include<iostream>
+// using namespace std;
+// int main()
+// {
+//     int m, n;
+//     cin >> m >> n;
+//     int rabbit = (n - 2 * m) / 2;
+//     int chicken = m - rabbit;
+//     // 全部条件同时成立
+//     if (n % 2 == 0 && rabbit >= 0 && chicken >= 0 && (2*m <= n && n <=4*m))
+//     //脚的数量为偶数，兔子数>=0，鸡数>=0,脚的数以全是鸡和全是兔取到极限值
+//     {
+//         cout << chicken << " " << rabbit;
+//     }
+//     else
+//     {
+//         cout << "Error";
+//     }
+//     return 0;
+// }
+
+// 错误示例
+// #include<iostream>
+// using namespace std;
+// int zs(int x)
+// {
+//     for(int i = 0; ;i++)//死循环
+//     {
+//         int num = x % 10;
+//         x /= 10;
+//         num = x;//直接覆盖num，白算了
+//         if(num == 5)
+//         return 1;
+//     }
+//     return 0;
+// }
+// int main()
+// {
+//     int m, n;
+//     cin >> m >> n;
+//     for(int i = m; i <= n; i++)
+//     {
+        
+//         if(zs(i) == 1 && i % 3 == 0)
+//         {
+//             int count = 1;//每次进入循环都会重置变量
+//             if(count != 1)
+//                 cout << " " ;
+//             cout << i ;
+//             count++;
+//         }
+//         else
+//         cout << "No exist" ;//有一个数字不满足上述条件就会输出
+//     }
+//     return 0;
+// }
+// 正确示例
+// #include<iostream>
+// using namespace std;
+// int zs(int x)
+// {
+//     while(x > 0)
+//     {
+//         int num = x % 10;
+//         x /= 10;
+//         if(num == 5)
+//         return 1;
+//     }
+//     return 0;
+// }
+// int main()
+// {
+//     int m, n;
+//     cin >> m >> n;
+//     int count = 0;
+//     for(int i = m; i <= n; i++)
+//     {
+//         if(zs(i) == 1 && i % 3 == 0)
+//         {
+//             if(count != 0)
+//                 cout << " " ;
+//             cout << i ;
+//             count++;
+//         }
+//     }
+//     if(count == 0)
+//       	cout << "No exist" ;
+//     return 0;
+// }
