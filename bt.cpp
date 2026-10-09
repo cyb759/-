@@ -478,3 +478,89 @@
 //       	cout << "No exist" ;
 //     return 0;
 // }
+
+
+//错误示例
+// #include<iostream>
+// #include<math.h>
+// using namespace std;
+// int sx(int x)//函数过于复杂，循环嵌套混乱
+// {
+//     int sum = x * x;//有可能会超出int范围
+//     int rem = 0;
+//     int c = sum;
+//     for(int i = 0; i <= 3; i++)//没有算出x有几位就固定循环3次，判断截取位数错误（i < x的位数）
+//     {
+//         rem = sum % 10;//求每一位对应数字
+//         sum = (sum - rem) / 10;
+//         while(1)
+//         {
+//             int b = pow(10,i + 1);//使用pow浮点运算，容易出错
+//             int a = c % b;
+//             if(a == x)
+//                 return 1;
+//             else
+//                 break;
+//         }
+//     }
+//     return 0;
+// }
+// int main(){
+//     int m, n;
+//     cin >> m >> n ;
+//     int count = 0;
+//     for(int i = m; i <= n; i++)
+//     {
+//         if(count != 0)//该语句放在if(sx(i) == 1)外面，导致可能会多打印出很多空格
+//         cout << " ";
+//         if(sx(i) == 1)
+//         cout << i;
+//         count++;
+//     }
+//     if(count == 0)
+//     cout << "No exist";
+//     return 0;
+// }
+//正确示例
+// #include<iostream>
+// using namespace std;
+// int sx(int x)
+// {
+//     long long square = (long long)x * x; // 防止溢出，用long long存平方
+//     long long mod = 1;
+//     // 算出x有几位，mod=10^位数
+//     int tmp = x;
+//     while(tmp > 0)
+//     {
+//         mod *= 10;
+//         tmp /= 10;
+//     }
+//     long long last = square % mod; // 取平方的最后对应位数
+//     if(last == x)
+//         return 1;
+//     else
+//         return 0;
+// }
+// int main()
+// {
+//     int m, n;
+//     cin >> m >> n;
+//     int count = 0;
+//     for(int i = m; i <= n; i++)
+//     {
+//         if(sx(i) == 1)
+//         {
+//             if(count != 0)
+//                 cout << " ";
+//             cout << i;
+//             count++;
+//         }
+//     }
+//     if(count == 0)
+//     {
+//         cout << "No exist";
+//     }
+//     return 0;
+// }
+
+
