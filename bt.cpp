@@ -564,3 +564,70 @@
 // }
 
 
+
+// #include <stdio.h>
+// typedef long long ll;
+// typedef __int128 lll;
+// static lll gcd128(lll a, lll b) {
+//     if (a < 0) a = -a;
+//     if (b < 0) b = -b;
+//     while (b) { lll t = a % b; a = b; b = t; }//辗转相除法
+//     return a;
+// }
+// static void print128(lll x) {
+//     if (x == 0) { putchar('0'); return; }//putchar——输出单个字符
+//     if (x < 0) { putchar('-'); x = -x; }
+//     char buf[50]; int p = 0;
+//     while (x) { buf[p++] = (char)('0' + (int)(x % 10)); x /= 10; }//取最低位数字，存成字符（倒叙存入字符）；去掉最低位
+//     while (p) putchar(buf[--p]);//--p——倒序输出数组buf里存储的数值
+// }
+// int main(void) {
+//     int N;
+//     if (scanf("%d", &N) != 1) return 0;
+//     lll num = 0, den = 1;                 
+//     for (int i = 0; i < N; i++) {
+//         ll a, b;
+//         if (scanf("%lld/%lld", &a, &b) != 2) break;//保证成功读取并且赋值两个变量（a,b）
+//         lll aa = a, bb = b;//转换a,b类型（long long>>__int128）
+//         lll g   = gcd128(den, bb);
+//         lll lcm = den / g * bb;//求出den和bb的最小公倍数
+//         num = num * (lcm / den) + aa * (lcm / bb);//求新分子（当前分母 den 放大到 lcm 需要的倍数）
+//         den = lcm;//更新分母，使得新分母还是lcm
+//         lll g2 = gcd128(num, den);        
+//         if (g2) { num /= g2; den /= g2; }
+//     }
+//     lll integer = num / den;              
+//     lll frac    = num % den;              
+//     if (integer != 0) {
+//         print128(integer);
+//         if (frac != 0) putchar(' ');
+//     }
+//     if (frac != 0) {
+//         print128(frac);
+//         putchar('/');
+//         print128(den);
+//     }
+//     if (integer == 0 && frac == 0) putchar('0');
+//     putchar('\n');
+//     return 0;
+// }
+
+
+
+//进阶
+// #include <stdio.h>
+// int main(void)
+// {
+//     long long n;
+//     int d[20], i = 0;
+//     const char *py[] = {"ling","yi","er","san","si","wu","liu","qi","ba","jiu"};
+//     if (scanf("%lld", &n) != 1) return 0;
+//     if (n < 0) { printf("fu "); n = -n; }   /* 直接带空格，省掉 first */
+//     if (n == 0) { printf("ling"); return 0; }
+//     for (; n; n /= 10) d[i++] = (int)(n % 10);//n 等价于 n != 0
+//     while (i--) {
+//         printf("%s", py[d[i]]);//先用 d[i] 取出一个数字，再拿这个数字去访问 py 数组
+//         if (i) putchar(' ');
+//     }
+//     return 0;
+// }
