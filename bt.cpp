@@ -632,3 +632,136 @@
 //     return 0;
 // }
 
+//错误示例
+// #include<stdio.h>
+// int main()
+// {
+//     int N,arr[1000],i = 0,max = 0,min = 100,cx = 0,cn = 0;
+//     scanf("%d",&N);
+//     while(N)
+//     {  
+//         scanf("%d",&arr[i]);
+//         i++;//位置错误（导致if语句比较时的i转变用i+1这个未初始化的垃圾值），应该先比较再自增
+//         N--;
+//         if(max < arr[i])
+//         {
+//             max = arr[i];
+//             cx++;//cx 统计的是"最大值被更换了几次"，不是最大值出现的次数
+//                  //正确做法：先找出最小/最大值，再重新遍历一遍数组，统计它出现的次数
+//         }         
+//         if(min > arr[i])
+//         {
+//             min = arr[i];
+//             cn++;
+//         }      
+//     }
+//     printf("%d %d\n%d %d", min, cn, max, cx);
+//     return 0;
+// }
+//正确示例
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int N;
+//     int arr[1000];
+
+//     scanf("%d", &N);
+//     for (int i = 0; i < N; i++)
+//     {
+//         scanf("%d", &arr[i]);
+//     }
+
+//     int min = arr[0], max = arr[0];
+//     for (int i = 1; i < N; i++)
+//     {
+//         if (arr[i] < min) min = arr[i];
+//         if (arr[i] > max) max = arr[i];
+//         //：比当前 min 小就更新 min，比当前 max 大就更新 max。循环结束后，min、max 就是整个数组的最小值和最大值
+//     }
+
+//     int cn = 0, cx = 0;
+//     for (int i = 0; i < N; i++)
+//     {
+//         if (arr[i] == min) cn++;
+//         if (arr[i] == max) cx++;
+//         //完整扫描一遍数组：每个数只要等于 min，cn 加 1；等于 max，cx 加 1。这样统计的才是真实的出现次数
+//     }
+
+//     printf("%d %d\n", min, cn);
+//     printf("%d %d\n", max, cx);
+
+//     return 0;
+// }
+
+
+
+
+//错误示例
+// #include<stdio.h>
+// int main()
+// {
+//     int arr[1000],n,input;//题目根本没给数字个数，事先不知道要读几个，用固定数组 arr[1000] 存全部数没有意义，还怕越界
+//     arr[0] = 0;
+//     for(int i = 1; i <= scanf("%d",&n); i++)//scanf("%d",&n) 的返回值是成功读入的数据个数，成功时是 1，失败/结束时是 EOF（-1），根本不是输入数字的总个数
+//     {
+//         scanf("%d", &arr[i]);//%d 后面的空格会让 scanf 在读完数字后继续等待一个非空白字符，程序会卡住不往下走。应写成 scanf("%d", &arr[i])
+//         if(arr[i] == 250)
+//         {
+//             printf("%d",i);
+//         }  
+//     }
+//     return 0;
+// }
+// //正确示例
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int x;
+//     int pos = 0;
+
+//     while (scanf("%d", &x) == 1)
+//     {
+//         pos++;
+//         if (x == 250)
+//         {
+//             printf("%d\n", pos);
+//             break;
+//         }
+//     }
+
+//     return 0;
+// }
+
+
+// #include<stdio.h>
+// #define lll __int128
+// void print_128(lll x)
+// {
+//     if(x == 0) {putchar('0'); return;}
+//     if(x < 0) {putchar('-'); x = - x;}
+//     char buf[100];
+//     int n = 0;
+//     while(x > 0)
+//     {
+//         buf[n++] = '0' + (int)(x % 10);
+//         x /= 10;
+//     }
+//     //while(n >= 0) putchar(buf[n--]);//你以为：存完 32 之后，n 指向最高位的下标。
+//                                     //实际上：n 是已存数字的个数（长度），不是下标
+//     while(n > 0) putchar(buf[--n]);
+// }
+// int main()
+// {
+//     int N;
+//     scanf("%d",&N);
+//     lll num = 1,s = 0;
+//     for(int i = 1; i <= N; i++)
+//     {
+//         num *= i;
+//         s += num;
+//     }
+//     print_128(s);
+//     return 0;
+// }
