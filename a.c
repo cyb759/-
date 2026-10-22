@@ -190,3 +190,165 @@
 //     return 0;
 // }
 
+
+
+//数组元素去重
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int n;
+//     if (scanf("%d", &n) != 1) return 0;
+
+//     int arr[1000];
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (scanf("%d", &arr[i]) != 1) return 0;
+//     }
+
+//     int first = 1;
+//     for (int i = 0; i < n; i++)
+//     {
+//         int seen = 0;
+//         for (int j = 0; j < i; j++)
+//         {
+//             if (arr[j] == arr[i])
+//             {
+//                 seen = 1;
+//                 break;
+//             }
+//         }
+//         if (!seen)                    
+//         {
+//             if (!first) putchar(' '); 
+//             printf("%d", arr[i]);
+//             first = 0;
+//         }
+//     }
+//     putchar('\n');
+//     return 0;
+// }
+
+
+
+//求n以内最大的k个素数以及它们的和
+// #include <stdio.h>
+
+// static int is_prime(int x)
+// {
+//     if (x < 2) return 0;
+//     if (x % 2 == 0) return x == 2;
+//     for (int i = 3; (long long)i * i <= x; i += 2)
+//     {
+//         if (x % i == 0) return 0;
+//     }
+//     return 1;
+// }
+
+// int main(void)
+// {
+//     int n, k;
+//     if (scanf("%d %d", &n, &k) != 2) return 0;
+
+//     long long sum = 0;
+//     int cnt = 0;
+
+//     for (int i = n; i >= 2 && cnt < k; i--)
+//     {
+//         if (is_prime(i))
+//         {
+//             if (cnt > 0) printf("+");   /* 第一个素数前不加 + */
+//             printf("%d", i);
+//             sum += i;
+//             cnt++;
+//         }
+//     }
+
+//     printf("=%lld\n", sum);
+//     return 0;
+// }
+
+
+
+#include <stdio.h>
+
+int main(void)
+{
+    int m, n;
+    if (scanf("%d %d", &m, &n) != 2) return 0;
+
+    int arr[11][11] = {0};
+    for(int i = 0; i < m; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    int count = 0;
+    for(int i = 0; i < m; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            printf("%d", arr[i][j]);
+            count++;
+            if(count % n == 0) putchar('\n');
+        }
+    }
+
+    int cnt = 0;
+    for(int j = 0; j < n; j++)
+    {
+        for(int i = 0; i < m; i++)
+        {
+            printf("%d", arr[j][i]);
+            cnt++;
+            if(cnt % m == 0) putchar('\n');
+        }
+    }
+   
+    return 0;
+}
+
+//矩阵转置
+#include <stdio.h>
+
+int main(void)
+{
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+
+    int a[10][10];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (scanf("%d", &a[i][j]) != 1) return 0;
+        }
+    }
+
+    /* 输出原矩阵：n 行 m 列 */
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (j > 0) putchar(' ');   /* 行首无空格 */
+            printf("%d", a[i][j]);
+        }
+        putchar('\n');
+    }
+
+    /* 输出转置矩阵：m 行 n 列，第 j 行第 i 列取 a[i][j] */
+    for (int j = 0; j < m; j++)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (i > 0) putchar(' ');
+            printf("%d", a[i][j]);
+        }
+        putchar('\n');
+    }
+
+    return 0;
+}
