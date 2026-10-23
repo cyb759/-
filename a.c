@@ -270,46 +270,6 @@
 
 
 
-#include <stdio.h>
-
-int main(void)
-{
-    int m, n;
-    if (scanf("%d %d", &m, &n) != 2) return 0;
-
-    int arr[11][11] = {0};
-    for(int i = 0; i < m; i++)
-    {
-        for(int j = 0; j < n; j++)
-        {
-            scanf("%d", &arr[i][j]);
-        }
-    }
-
-    int count = 0;
-    for(int i = 0; i < m; i++)
-    {
-        for(int j = 0; j < n; j++)
-        {
-            printf("%d", arr[i][j]);
-            count++;
-            if(count % n == 0) putchar('\n');
-        }
-    }
-
-    int cnt = 0;
-    for(int j = 0; j < n; j++)
-    {
-        for(int i = 0; i < m; i++)
-        {
-            printf("%d", arr[j][i]);
-            cnt++;
-            if(cnt % m == 0) putchar('\n');
-        }
-    }
-   
-    return 0;
-}
 
 //矩阵转置
 #include <stdio.h>
