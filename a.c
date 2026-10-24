@@ -271,44 +271,184 @@
 
 
 
-//矩阵转置
-#include <stdio.h>
+// //矩阵转置
+// #include <stdio.h>
 
-int main(void)
-{
-    int n, m;
-    if (scanf("%d %d", &n, &m) != 2) return 0;
+// int main(void)
+// {
+//     int n, m;
+//     if (scanf("%d %d", &n, &m) != 2) return 0;
 
-    int a[10][10];
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if (scanf("%d", &a[i][j]) != 1) return 0;
-        }
-    }
+//     int a[10][10];
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < m; j++)
+//         {
+//             if (scanf("%d", &a[i][j]) != 1) return 0;
+//         }
+//     }
 
-    /* 输出原矩阵：n 行 m 列 */
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if (j > 0) putchar(' ');   /* 行首无空格 */
-            printf("%d", a[i][j]);
-        }
-        putchar('\n');
-    }
+//     /* 输出原矩阵：n 行 m 列 */
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < m; j++)
+//         {
+//             if (j > 0) putchar(' ');   /* 行首无空格 */
+//             printf("%d", a[i][j]);
+//         }
+//         putchar('\n');
+//     }
 
-    /* 输出转置矩阵：m 行 n 列，第 j 行第 i 列取 a[i][j] */
-    for (int j = 0; j < m; j++)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            if (i > 0) putchar(' ');
-            printf("%d", a[i][j]);
-        }
-        putchar('\n');
-    }
+//     /* 输出转置矩阵：m 行 n 列，第 j 行第 i 列取 a[i][j] */
+//     for (int j = 0; j < m; j++)
+//     {
+//         for (int i = 0; i < n; i++)
+//         {
+//             if (i > 0) putchar(' ');
+//             printf("%d", a[i][j]);
+//         }
+//         putchar('\n');
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
+
+
+
+//找出二维数组中的最小元素
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int m, n;
+//     if (scanf("%d%d", &m, &n) != 2)
+//         return 0;
+
+//     int arr[30][30] = {0};
+//     for (int i = 0; i < m; i++)
+//         for (int j = 0; j < n; j++)
+//             scanf("%d", &arr[i][j]);
+
+//     /* 输出处理前 */
+//     printf("before:\n");
+//     for (int i = 0; i < m; i++) {
+//         for (int j = 0; j < n; j++)
+//             printf("%4d", arr[i][j]);
+//         printf("\n");
+//     }
+
+//     /* 找最小元素及其所在行 */
+//     int min = arr[0][0], minRow = 0;
+//     for (int i = 0; i < m; i++) {
+//         for (int j = 0; j < n; j++) {
+//             if (arr[i][j] < min) {
+//                 min = arr[i][j];
+//                 minRow = i;
+//             }
+//         }
+//     }
+
+//     /* 与末行交换 */
+//     if (minRow != m - 1) {
+//         for (int j = 0; j < n; j++) {
+//             int t = arr[minRow][j];
+//             arr[minRow][j] = arr[m - 1][j];
+//             arr[m - 1][j] = t;
+//         }
+//     }
+
+//     /* 输出处理后 */
+//     printf("after:\n");
+//     for (int i = 0; i < m; i++) {
+//         for (int j = 0; j < n; j++)
+//             printf("%4d", arr[i][j]);
+//         printf("\n");
+//     }
+
+//     return 0;
+// }
+
+
+//奇数阶幻方问题
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int n;
+//     if (scanf("%d", &n) != 1) return 0;
+
+//     int a[100][100] = {0};          /* 0 表示空位 */
+
+//     int row = 0, col = n / 2;       /* 1 放在第一行正中间 */
+//     a[row][col] = 1;
+
+//     for (int k = 2; k <= n * n; k++)
+//     {
+//         /* 先尝试右上方：行减 1、列加 1，越界则绕回 */
+//         int r = (row - 1 + n) % n;
+//         int c = (col + 1) % n;
+
+//         if (a[r][c] != 0)
+//         {
+//             /* 右上方已有数字：放在上一个数的正下方 */
+//             r = (row + 1) % n;
+//             c = col;
+//         }
+
+//         a[r][c] = k;
+//         row = r;                    /* 更新当前位置，作为下一次的基准 */
+//         col = c;
+//     }
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//             printf("%4d", a[i][j]);
+//         printf("\n");
+//     }
+
+//     return 0;
+// }
+
+
+//统计学生的总分以及各课程的平均分
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int n, m;
+//     if (scanf("%d%d", &n, &m) != 2) return 0;
+
+//     char name[100][64];          /* 姓名最长 25，留足空间 */
+//     int  score[100][10];         /* 最多 100 人、10 门课 */
+//     int  total[100] = {0};       /* 每个学生的总分 */
+//     int  sum[10] = {0};          /* 每门课的总分 */
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         scanf("%63s", name[i]);
+//         for (int j = 0; j < m; j++)
+//         {
+//             scanf("%d", &score[i][j]);
+//             total[i] += score[i][j];
+//             sum[j]   += score[i][j];
+//         }
+//     }
+
+//     /* 每个学生一行：姓名 + 总分 + 各科成绩 */
+//     for (int i = 0; i < n; i++)
+//     {
+//         printf("%-8s%6d", name[i], total[i]);
+//         for (int j = 0; j < m; j++)
+//             printf("%6d", score[i][j]);
+//         printf("\n");
+//     }
+
+//     /* 各科平均分 */
+//     printf("average score:");
+//     for (int j = 0; j < m; j++)
+//         printf("%6.1f", (double)sum[j] / n);
+//     printf("\n");
+
+//     return 0;
+// }
