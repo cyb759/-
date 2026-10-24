@@ -452,3 +452,271 @@
 
 //     return 0;
 // }
+
+
+//在有序数组里面插入一个数字
+// #include<stdio.h>
+
+// int main(void)
+// {
+//     int n;
+//     if (scanf("%d", &n) != 1) return 0;
+
+//     int arr[101] = {0};
+//     for (int i = 0; i < n; i++)
+//         scanf("%d", &arr[i]);
+
+//     int x;
+//     if (scanf("%d", &x) != 1) return 0;
+
+//     /* 1. 找插入位置：第一个大于 x 的元素之前；找不到就放末尾 */
+//     int pos = n;
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (arr[i] > x)
+//         {
+//             pos = i;
+//             break;              /* 找到就停，不能继续往后插 */
+//         }
+//     }
+
+//     /* 2. 从后往前，把 pos 及其后的元素整体后移一位 */
+//     for (int i = n; i > pos; i--)
+//         arr[i] = arr[i - 1];
+
+//     /* 3. 放入 x */
+//     arr[pos] = x;
+
+//     /* 输出 n+1 个数，空格分隔，行末无空格 */
+//     for (int i = 0; i <= n; i++)
+//     {
+//         if (i > 0) putchar(' ');
+//         printf("%d", arr[i]);
+//     }
+
+//     return 0;
+// }
+
+
+//狐狸在洞里找兔子
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int n, m;
+//     if (scanf("%d%d", &n, &m) != 2) return 0;
+
+//     int visited[101] = {0};              /* 只需 1..n */
+
+//     long long limit = (long long)n * m;  /* m 圈的总路程 */
+//     long long dist = 0;                  /* 已走路程 */
+//     int pos = 1;                         /* 当前洞号 1..n */
+//     int step = 2;                        /* 隔 1 个洞 => 走 2 格 */
+
+//     visited[pos] = 1;                    /* 第一次检查 1 号洞 */
+
+//     while (dist + step <= limit)         /* 这一跳能在 m 圈内跳完 */
+//     {
+//         dist += step;
+//         pos = (pos - 1 + step) % n + 1;  /* 环形前进，结果 1..n */
+//         visited[pos] = 1;
+//         step++;                          /* 下次多隔一个洞 */
+//     }
+
+//     int first = 1;
+//     for (int i = 1; i <= n; i++)
+//     {
+//         if (!visited[i])
+//         {
+//             if (!first) putchar(' ');
+//             printf("%d", i);
+//             first = 0;
+//         }
+//     }
+
+//     if (first)                           /* 没有安全洞 */
+//         printf("No choice");
+
+//     putchar('\n');
+//     return 0;
+// }
+
+
+
+
+//和do……while循环相比,解决忽略前导0的问题
+// int qubie(int i)
+// {
+//     int seen[10] = {0}, cnt = 0;
+//     for(int k = 0; k < 4; k++)
+//     {
+//         int d = i % 10;
+//         if(seen[d] == 0)
+//         {
+//             seen[d] = 1;
+//             cnt++;
+//         }
+//         i /= 10;
+//     }
+//     return cnt;
+// }
+
+
+
+//找鞍点（行上最大，列上最小）
+// #include<stdio.h>
+
+// int main(void)
+// {
+//     int n;
+//     if (scanf("%d", &n) != 1) return 0;
+
+//     int a[6][6] = {0};
+//     for (int i = 0; i < n; i++)
+//         for (int j = 0; j < n; j++)
+//             if (scanf("%d", &a[i][j]) != 1) return 0;
+
+//     int rowMax[6], colMin[6];
+
+//     /* 每行的最大值 */
+//     for (int i = 0; i < n; i++)
+//     {
+//         rowMax[i] = a[i][0];
+//         for (int j = 1; j < n; j++)
+//             if (a[i][j] > rowMax[i])
+//                 rowMax[i] = a[i][j];
+//     }
+
+//     /* 每列的最小值 */
+//     for (int j = 0; j < n; j++)
+//     {
+//         colMin[j] = a[0][j];
+//         for (int i = 1; i < n; i++)
+//             if (a[i][j] < colMin[j])
+//                 colMin[j] = a[i][j];
+//     }
+
+//     /* 找同时满足两个条件的位置 */
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             if (a[i][j] == rowMax[i] && a[i][j] == colMin[j])
+//             {
+//                 printf("%d %d\n", i, j);
+//                 return 0;               /* 题目保证至多一个鞍点 */
+//             }
+//         }
+//     }
+
+//     printf("NONE\n");
+//     return 0;
+// }
+
+
+//1234方阵
+// #include<stdio.h>
+
+// int main()
+// {
+//     int n;
+//     if(scanf("%d", &n) != 1) return 0;
+
+//     int arr[100][100] = {0};
+//     for(int i = 0; i < n; i++)
+//     {
+//         for(int j = 0; j < n; j++)
+//         {
+//             if (i < j && i + j < n - 1)   /* 上方 */
+//                 arr[i][j] = 1;
+//             else if (i > j && i + j < n - 1)   /* 左方 */
+//                 arr[i][j] = 2;
+//             else if (i > j && i + j > n - 1)   /* 下方 */
+//                 arr[i][j] = 3;
+//             else if(i < j && i + j > n - 1)                             /* 剩下的就是右方 */
+//                 arr[i][j] = 4;
+
+//             if (j > 0) putchar(' ');           /* 数字之间一个空格 */
+//             printf("%d", arr[i][j]);
+//         }
+//         putchar('\n');
+//     }
+//     return 0;
+// }
+//示例二
+// #include<stdio.h>
+
+// int main(void)
+// {
+//     int n;
+//     if (scanf("%d", &n) != 1) return 0;
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             int v;
+
+//             if (i == j || i + j == n - 1)      /* 两条对角线 */
+//                 v = 0;
+//             else if (i < j && i + j < n - 1)   /* 上方 */
+//                 v = 1;
+//             else if (i > j && i + j < n - 1)   /* 左方 */
+//                 v = 2;
+//             else if (i > j && i + j > n - 1)   /* 下方 */
+//                 v = 3;
+//             else                               /* 剩下的就是右方 */
+//                 v = 4;
+
+//             if (j > 0) putchar(' ');           /* 数字之间一个空格 */
+//             printf("%d", v);
+//         }
+//         putchar('\n');
+//     }
+
+//     return 0;
+// }
+
+
+
+//进制转换
+// #include<stdio.h>
+// #include<ctype.h>
+
+// int main(void)
+// {
+//     char hex[10];        /* 过滤后的十六进制串，长度小于 8 */
+//     int k = 0;
+//     int ch;
+
+//     /* 一直读到 '#' 或文件结束 */
+//     while ((ch = getchar()) != '#' && ch != EOF)
+//     {
+//         if (isxdigit((unsigned char)ch))   /* 0-9、a-f、A-F 都算 */
+//         {
+//             if (k < 9)                     /* 防止越界 */
+//                 hex[k++] = (char)ch;
+//         }
+//     }
+//     hex[k] = '\0';
+
+//     /* 十六进制字符串转十进制：num = num * 16 + 当前位的值 */
+//     int num = 0;
+//     for (int i = 0; i < k; i++)
+//     {
+//         int d;
+//         if (hex[i] >= '0' && hex[i] <= '9')
+//             d = hex[i] - '0';
+//         else if (hex[i] >= 'a' && hex[i] <= 'f')
+//             d = hex[i] - 'a' + 10;
+//         else
+//             d = hex[i] - 'A' + 10;
+
+//         num = num * 16 + d;
+//     }
+
+//     printf("String:%s\n", hex);
+//     printf("number=%d\n", num);
+
+//     return 0;
+// }
