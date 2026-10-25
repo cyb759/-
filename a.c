@@ -720,3 +720,28 @@
 
 //     return 0;
 // }
+
+
+//英文字母替换加密
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int ch;
+
+//     while ((ch = getchar()) != '\n' && ch != EOF)
+//     {
+//         if (ch >= 'a' && ch <= 'z')          /* 小写 -> 后一个字母的大写 */
+//             ch = 'A' + (ch - 'a' + 1) % 26;
+//         else if (ch >= 'A' && ch <= 'Z')     /* 大写 -> 后一个字母的小写 */
+//             ch = 'a' + (ch - 'A' + 1) % 26;
+
+//         putchar(ch);
+//     }
+
+//     putchar('\n');
+//     return 0;
+// }
+
+
+
