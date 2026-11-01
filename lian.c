@@ -147,3 +147,104 @@
 //     printf("交换后：%d %d\n", a, b);
 //     return 0;
 // }
+
+
+//统计二进制中1的个数
+// #include <stdio.h>
+
+// int count_ones(unsigned int n)
+// {
+//     int count = 0;
+
+//     while (n != 0) {
+//         if ((n & 1) == 1) {
+//             count++;
+//         }
+//         n >>= 1;
+//     }
+
+//     return count;
+// }
+
+// int main(void)
+// {
+//     int n;
+
+//     if (scanf("%d", &n) == 1) {
+//         printf("%d\n", count_ones((unsigned int)n));
+//     }
+
+//     return 0;
+// }
+
+
+
+// #include <stdio.h>
+
+// void oushu(int num)
+// {
+//     // 偶数位：第32、30、28、...、2位
+//     for (int i = 31; i >= 1; i -= 2)
+//     {
+//         printf("%d ", (num >> i) & 1);
+//     }
+//     putchar('\n');
+// }
+
+// void jishu(int num)
+// {
+//     // 奇数位：第31、29、27、...、1位
+//     for (int i = 30; i >= 0; i -= 2)
+//     {
+//         printf("%d ", (num >> i) & 1);
+//     }
+//     putchar('\n');
+// }
+
+// int main(void)
+// {
+//     int n;
+
+//     if (scanf("%d", &n) == 1)
+//     {
+//         oushu(n);
+//         jishu(n);
+//     }
+
+//     return 0;
+// }
+
+
+//输出两个整数二进制中不同位的个数
+// #include <stdio.h>
+// int main()
+// {
+//     int m, n;
+//     if(scanf("%d %d", &m, &n) == 2) 
+//     {
+//         int arr1[32] = {0}, arr2[32] = {0};
+//         for(int i = 0; i < 32; i++)
+//             {
+//                 int a = n % 2;
+//                 arr1[i] = a;
+//                 n /= 2;
+//             }
+                    
+//         for (int i = 0; i < 32; i++)
+//         {
+//             int a = m % 2;
+//             arr2[i] = a;
+//             m /= 2;
+//         }
+
+//         int count = 0;
+//         for(int i = 0; i < 32; i++)
+//         {
+//             if(arr1[i] != arr2[i])
+//                 count++;
+//         }
+//         printf("%d\n", count);
+//     }
+
+//     return 0;
+// }
